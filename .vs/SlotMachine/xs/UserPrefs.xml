@@ -1,23 +1,4 @@
-﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{3A45E024-D11C-4E99-B370-90F41F0E19B4}|Default">
-  <MonoDevelop.Ide.ItemProperties.SlotMachine PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SlotMachine/Program.cs">
-    <Files>
-      <File FileName="SlotMachine/Program.cs" Line="1" Column="1" />
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="SlotMachine" expanded="True">
-            <Node name="SlotMachine" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
+﻿<Properties StartupConfiguration="{3CE620CD-9028-4E12-8983-2B5E293FC1CB}|Default">
+  <MonoDevelop.Ide.ItemProperties.SlotMachine FirstBuild="True" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
