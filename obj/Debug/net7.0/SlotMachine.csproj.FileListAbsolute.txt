@@ -1,0 +1,15 @@
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/bin/Debug/net7.0/SlotMachine
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/bin/Debug/net7.0/SlotMachine.deps.json
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/bin/Debug/net7.0/SlotMachine.runtimeconfig.json
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/bin/Debug/net7.0/SlotMachine.dll
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/bin/Debug/net7.0/SlotMachine.pdb
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/obj/Debug/net7.0/SlotMachine.csproj.AssemblyReference.cache
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/obj/Debug/net7.0/SlotMachine.GeneratedMSBuildEditorConfig.editorconfig
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/obj/Debug/net7.0/SlotMachine.AssemblyInfoInputs.cache
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/obj/Debug/net7.0/SlotMachine.AssemblyInfo.cs
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/obj/Debug/net7.0/SlotMachine.csproj.CoreCompileInputs.cache
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/obj/Debug/net7.0/SlotMachine.dll
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/obj/Debug/net7.0/refint/SlotMachine.dll
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/obj/Debug/net7.0/SlotMachine.pdb
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/obj/Debug/net7.0/SlotMachine.genruntimeconfig.cache
+/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/obj/Debug/net7.0/ref/SlotMachine.dll
