@@ -2,8 +2,49 @@
 
 class Program
 {
+    public const double COST_PER_SPIN = 2.00;
+    public const int MAX_NUMBER = 9;
+
     static void Main(string[] args)
     {
-        Console.WriteLine("Welcome to the Slot Machine! Press the Return key to begin");
+        Console.WriteLine("Let's play Slot Machine!\n");
+        Console.WriteLine("Each spin costs $2.00. Enter the amount of money you would like to play with: \n");
+
+        //Amount entered from player to begin the game
+        double playerMoney = double.Parse(Console.ReadLine());
+
+        if (playerMoney >= COST_PER_SPIN)
+        {
+            Console.WriteLine($"You have entered ${playerMoney}. Let the games begin!\n");
+        }
+
+        else
+        {
+            Console.WriteLine($"You have entered ${playerMoney}. Please enter more money to begin the game.\n");
+        }
+
+        Console.WriteLine("Hit the 'Y' button to spin\n");
+        char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
+
+        if (spinButton == 'Y')
+        {
+            //Insert numbers into 2DArray using Random Numbers
+            int[,] slotNumbers = new int[3, 3];
+            Random ranNum = new Random();
+            for (int i = 0; i < slotNumbers.GetLength(0); i++)
+            {
+                for (int j = 0; j < slotNumbers.GetLength(1); j++)
+                {
+
+                    slotNumbers[i, j] = ranNum.Next(1, MAX_NUMBER + 1);
+                }
+            }
+        }
+
+        else
+        {
+            Console.WriteLine("\nInvalid character chosen. Please hit 'Y' to spin");
+        }
+        
     }
 }
