@@ -25,7 +25,7 @@ class Program
 
         Console.WriteLine("Hit the 'Y' button to spin\n");
         char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
-
+        
         if (spinButton == 'Y')
         {
             //Insert numbers into 2DArray using Random Numbers
@@ -35,9 +35,20 @@ class Program
             {
                 for (int j = 0; j < slotNumbers.GetLength(1); j++)
                 {
-
                     slotNumbers[i, j] = ranNum.Next(1, MAX_NUMBER + 1);
                 }
+
+                if (slotNumbers[i,0] == slotNumbers[i,1] && slotNumbers[i,1] == slotNumbers[i,2])
+                {
+                    Console.WriteLine("You got three in a row! You win!");
+                    break;
+                }
+
+                else
+                {
+                    Console.WriteLine("\nTry Again.");
+                }
+
             }
         }
 
