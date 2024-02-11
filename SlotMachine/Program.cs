@@ -38,7 +38,7 @@ class Program
                     slotNumbers[i, j] = ranNum.Next(1, MAX_NUMBER + 1);
                 }
 
-                if (slotNumbers[i,0] == slotNumbers[i,1] && slotNumbers[i,1] == slotNumbers[i,2])
+                if (i == 1 && slotNumbers[i, 0] == slotNumbers[i, 1] && slotNumbers[i, 1] == slotNumbers[i, 2])
                 {
                     Console.WriteLine("You got three in a row! You win!");
                     break;
