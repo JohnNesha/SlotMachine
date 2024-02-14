@@ -7,20 +7,25 @@ class Program
 
     static void Main(string[] args)
     {
-        Console.WriteLine("Let's play Slot Machine!\n");
-        Console.WriteLine("Each spin costs $2.00. Enter the amount of money you would like to play with: \n");
+            Console.WriteLine("Let's play Slot Machine!\n");
+            Console.WriteLine("Each spin costs $2.00. Enter the amount of money you would like to play with: \n");
 
-        //Amount entered from player to begin the game
-        double playerMoney = double.Parse(Console.ReadLine());
+            //Amount entered from player to begin the game
+            double playerMoney = double.Parse(Console.ReadLine());
 
-        if (playerMoney >= COST_PER_SPIN)
+        while (true)
         {
-            Console.WriteLine($"You have entered ${playerMoney}. Let the games begin!\n");
-        }
+            if (playerMoney >= COST_PER_SPIN)
+            {
+                Console.WriteLine($"You have entered ${playerMoney}. Let the games begin!\n");
+                break;
+            }
 
-        else
-        {
-            Console.WriteLine($"You have entered ${playerMoney}. Please enter more money to begin the game.\n");
+            else
+            {
+                Console.WriteLine($"You have entered ${playerMoney}. Please enter more money to begin the game.\n");
+                playerMoney = double.Parse(Console.ReadLine());
+            }
         }
 
         Console.WriteLine("Hit the 'Y' button to spin\n");
