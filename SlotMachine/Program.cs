@@ -22,10 +22,9 @@ class Program
                 break;
             }
 
-            else
             {
-                Console.WriteLine($"You have entered ${playerMoney}. Please enter more money to begin the game.\n");
-                playerMoney = double.Parse(Console.ReadLine());
+               Console.WriteLine($"You have entered ${playerMoney}. Please enter more money to begin the game.\n");
+               playerMoney = double.Parse(Console.ReadLine());
             }
         }
 
