@@ -4,6 +4,7 @@ class Program
 {
     public const double COST_PER_SPIN = 2.00;
     public const int MAX_NUMBER = 9;
+    public const char START_SPIN = 'Y';
 
     static void Main(string[] args)
     {
@@ -31,7 +32,7 @@ class Program
         Console.WriteLine("Hit the 'Y' button to spin\n");
         char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
         
-        if (spinButton == 'Y')
+        if (spinButton == START_SPIN)
         {
             //Insert numbers into 2DArray using Random Numbers
             int[,] slotNumbers = new int[3, 3];
