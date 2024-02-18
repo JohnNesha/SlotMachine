@@ -18,7 +18,7 @@ class Program
         {
             if (playerMoney >= COST_PER_SPIN)
             {
-                Console.WriteLine($"You have entered ${playerMoney}. Let the games begin!\n");
+                Console.WriteLine($"\nYou have entered ${playerMoney}. Let the games begin!\n");
                 break;
             }
 
@@ -30,18 +30,29 @@ class Program
 
         Console.WriteLine("Hit the 'Y' button to spin\n");
         char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
+
+        Console.WriteLine("\n");
         
         if (spinButton == START_SPIN)
         {
+            Console.WriteLine("\nSpinning...");
+            Console.WriteLine("\nSpinning...");
+
             //Insert numbers into 2DArray using Random Numbers
             int[,] slotNumbers = new int[3, 3];
             Random ranNum = new Random();
+
+            Console.WriteLine("\n");
+
             for (int i = 0; i < slotNumbers.GetLength(0); i++)
             {
                 for (int j = 0; j < slotNumbers.GetLength(1); j++)
                 {
                     slotNumbers[i, j] = ranNum.Next(1, MAX_NUMBER + 1);
+                    Console.Write(slotNumbers[i, j] + " ");
                 }
+
+                Console.WriteLine("\n");
 
                 if (i == 1 && slotNumbers[i, 0] == slotNumbers[i, 1] && slotNumbers[i, 1] == slotNumbers[i, 2])
                 {
@@ -51,7 +62,7 @@ class Program
 
                 else
                 {
-                    Console.WriteLine("\nTry Again.");
+                    Console.WriteLine("\nTry Again.\n");
                 }
 
             }
