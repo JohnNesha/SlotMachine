@@ -7,14 +7,32 @@ class Program
     public const char START_SPIN = 'Y';
     public const int VERTICAL_LINE = 3;
     public const int HORIZONTAL_LINE = 3;
-    
+
     static void Main(string[] args)
     {
-            Console.WriteLine("Let's play Slot Machine!\n");
-            Console.WriteLine("Each spin costs $2.00. Enter the amount of money you would like to play with: \n");
+        Console.WriteLine("Let's play Slot Machine!\n");
+        Console.WriteLine("Each spin costs $2.00.\n");
 
-            //Amount entered from player to begin the game
-            double playerMoney = double.Parse(Console.ReadLine());
+        //Amount entered from player to begin the game
+        bool invalidAmount = false;
+        double playerMoney = 0;
+
+        while (!invalidAmount)
+        {
+            Console.Write("Enter an amount to begin the game: ");
+            Console.WriteLine("\n");
+            string userInput = Console.ReadLine();
+
+            if (double.TryParse(userInput, out playerMoney))
+            {
+                if (playerMoney >= COST_PER_SPIN)
+                {
+                    invalidAmount = true;
+                }
+            }
+        }
+
+        // double playerMoney = double.Parse(Console.ReadLine());
 
         while (true)
         {
@@ -25,8 +43,8 @@ class Program
             }
             //If player doesn't enter an amount over spin costs player will be advised to enter more money
             {
-               Console.WriteLine($"You have entered ${playerMoney}. Please enter more money to begin the game.\n");
-               playerMoney = double.Parse(Console.ReadLine());
+                Console.WriteLine($"You have entered ${playerMoney}. Please enter more money to begin the game.\n");
+                playerMoney = double.Parse(Console.ReadLine());
             }
         }
         //Player hits Y to start or spin the game 
@@ -44,23 +62,23 @@ class Program
         }
 
         Console.WriteLine("\n");
-        
-        if (spinButton == START_SPIN)
+
+        while (playerMoney > 0)
         {
-          Console.WriteLine("\nSpinning...");
-          Console.WriteLine("\nSpinning...");
+            playerMoney -= COST_PER_SPIN;
 
-          //Insert numbers into 2DArray using Random Numbers
-          int[,] slotNumbers = new int[VERTICAL_LINE, HORIZONTAL_LINE];
-          Random ranNum = new Random();
-            int numberOfRows = slotNumbers.GetLength(0);
-            int numberOfColumns = slotNumbers.GetLength(1);
+            Console.WriteLine("\nSpinning...");
+            Console.WriteLine("\nSpinning...");
 
-         Console.WriteLine("\n");
+            //Insert numbers into 2DArray using Random Numbers
+            int[,] slotNumbers = new int[VERTICAL_LINE, HORIZONTAL_LINE];
+            Random ranNum = new Random();
 
-            for (int i = 0; i < numberOfRows; i++)
+            Console.WriteLine("\n");
+
+            for (int i = 0; i < HORIZONTAL_LINE; i++)
             {
-                for (int j = 0; j < numberOfColumns; j++)
+                for (int j = 0; j < VERTICAL_LINE; j++)
                 {
                     //Numbers will display after spin 
                     slotNumbers[i, j] = ranNum.Next(1, MAX_NUMBER + 1);
@@ -69,17 +87,25 @@ class Program
                 Console.WriteLine("\n");
 
                 //Print Slot numbers
-                for (int j = 0; j < numberOfColumns; j++)
+                for (int j = 0; j < VERTICAL_LINE; j++)
                 {
                     Console.Write(slotNumbers[i, j] + " ");
                 }
+            }
 
-                //Check for one win at a time
-                if (i < numberOfRows - 1)
+            //Check for one win at a time
+            int firstLine = 0;
+            int secondLine = 1;
+            int thirdLine = 2;
+
+            for (int i = 0; i < HORIZONTAL_LINE; i++)
+            {
+                if (i < HORIZONTAL_LINE - 1)
                 {
-                    if (slotNumbers[i,0] == slotNumbers[i,1] && slotNumbers[i,1] == slotNumbers[i,2])
+                    if (slotNumbers[i, firstLine] == slotNumbers[i, secondLine] && slotNumbers[i, secondLine] == slotNumbers[i, thirdLine])
                     {
                         Console.WriteLine("You got three in a row! You win!", i + 1);
+                        playerMoney += COST_PER_SPIN;
                         break;
                     }
                 }
@@ -88,10 +114,8 @@ class Program
                     Console.WriteLine("\n\nTry Again.\n");
                     Console.WriteLine("Hit the 'Y' button to spin again");
                     Console.ReadKey();
-
                 }
-
             }
-        }   
+        }
     }
 }
