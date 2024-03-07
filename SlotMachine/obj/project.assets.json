@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/SlotMachine/SlotMachine.csproj",
+      "projectUniqueName": "/Users/johnneshagraves/Documents/GitHub/SlotMachine/SlotMachine/SlotMachine.csproj",
       "projectName": "SlotMachine",
-      "projectPath": "/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/SlotMachine/SlotMachine.csproj",
+      "projectPath": "/Users/johnneshagraves/Documents/GitHub/SlotMachine/SlotMachine/SlotMachine.csproj",
       "packagesPath": "/Users/johnneshagraves/.nuget/packages/",
-      "outputPath": "/Users/johnneshagraves/Projects/SlotMachine/SlotMachine/SlotMachine/SlotMachine/obj/",
+      "outputPath": "/Users/johnneshagraves/Documents/GitHub/SlotMachine/SlotMachine/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/johnneshagraves/.nuget/NuGet/NuGet.Config"
