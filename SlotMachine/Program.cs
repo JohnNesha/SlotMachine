@@ -101,7 +101,7 @@ class Program
             //Check for one win at a time
             for (int i = 0; i < HORIZONTAL_LINE - 1; i++)
             {
-                    if (slotNumbers[i, firstLine] == slotNumbers[i, secondLine] && slotNumbers[i, secondLine] == slotNumbers[i, thirdLine])
+                    if (slotNumbers[i, firstLine] == slotNumbers[i+secondLine, firstLine] && slotNumbers[i, firstLine] == slotNumbers[i+thirdLine, thirdLine])
                     {
                         Console.WriteLine("You got three in a row! You win!", i + 1);
                         playerMoney += COST_PER_SPIN;
