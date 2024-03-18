@@ -71,9 +71,7 @@ class Program
             Console.WriteLine("\nSpinning...");
 
             //Insert numbers into 2DArray using Random Numbers
-            int firstLine = 0;
-            int secondLine = 1;
-            int thirdLine = 2;
+            int numberOfWins = 0;
 
             int[,] slotNumbers = new int[VERTICAL_LINE, HORIZONTAL_LINE];
 
@@ -99,12 +97,13 @@ class Program
             }
 
             //Check for one win at a time
-            for (int i = 0; i < HORIZONTAL_LINE - 1; i++)
+            for (int i = 0; i < HORIZONTAL_LINE; i++)
             {
-                    if (slotNumbers[i, firstLine] == slotNumbers[i+secondLine, firstLine] && slotNumbers[i, firstLine] == slotNumbers[i+thirdLine, thirdLine])
+                    if (slotNumbers[i, i] == slotNumbers[i, i+1] && slotNumbers[i, i+1] == slotNumbers[i, i+2])
                     {
                         Console.WriteLine("You got three in a row! You win!", i + 1);
                         playerMoney += COST_PER_SPIN;
+                        numberOfWins++;
                         break;
                     }
                 
