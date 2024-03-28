@@ -41,6 +41,7 @@ class Program
                 Console.WriteLine($"\nYou have entered ${playerMoney}. Let the games begin!\n");
                 break;
             }
+            else
             //If player doesn't enter an amount over spin costs player will be advised to enter more money
             {
                 Console.WriteLine($"You have entered ${playerMoney}. Please enter more money to begin the game.\n");
@@ -99,7 +100,7 @@ class Program
             //Check for one win at a time
             for (int i = 0; i < HORIZONTAL_LINE; i++)
             {
-                    if (slotNumbers[i, i] == slotNumbers[i, i+1] && slotNumbers[i, i+1] == slotNumbers[i, i+2])
+                    if (slotNumbers[i, i] == slotNumbers[i, 0] && slotNumbers[i, 0] == slotNumbers[i, VERTICAL_LINE - 1])
                     {
                         Console.WriteLine("You got three in a row! You win!", i + 1);
                         playerMoney += COST_PER_SPIN;
