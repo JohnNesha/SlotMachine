@@ -73,6 +73,7 @@ class Program
 
             //Insert numbers into 2DArray using Random Numbers
             int numberOfWins = 0;
+            double amountWon = 1.00;
 
             int[,] slotNumbers = new int[VERTICAL_LINE, HORIZONTAL_LINE];
 
@@ -100,20 +101,25 @@ class Program
             //Check for one win at a time
             for (int i = 0; i < HORIZONTAL_LINE; i++)
             {
-                if (slotNumbers[i, i] == slotNumbers[i, 0] && slotNumbers[i, 0] == slotNumbers[i, VERTICAL_LINE - 1])
+                if (i == 0)
                 {
-                    Console.WriteLine("\nYou got three in a row! You win!", i + 1);
-                    playerMoney += COST_PER_SPIN;
-                    numberOfWins++;
-                    break;
+                    if (slotNumbers[i, 0] == slotNumbers[i, 1] && slotNumbers[i, 1] == slotNumbers[i, 2])
+                    {
+                        Console.WriteLine("\nYou got three in a row! You win!", i + 1);
+                        playerMoney += COST_PER_SPIN;
+                        numberOfWins++;
+                        amountWon++;
+                        break;
+                    }
                 }
-        
-            }
 
-            {
-                Console.WriteLine("\n\nTry Again.\n");
-                Console.WriteLine("Hit the 'Y' button to spin again\n");
-                Console.ReadKey();
+                else
+                {
+                    Console.WriteLine("\n\nTry Again.\n");
+                    Console.WriteLine("Hit the 'Y' button to spin again\n");
+                    Console.ReadKey();
+                }
+
             }
 
         }
