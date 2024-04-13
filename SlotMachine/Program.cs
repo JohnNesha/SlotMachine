@@ -121,6 +121,16 @@ class Program
                 }
 
             }
+            for (int j = 0; j < HORIZONTAL_LINE; j++)
+            {
+                if (j == 0)
+                {
+                    if (slotNumbers[j, 0] == slotNumbers[j, 1] && slotNumbers[j, 1] == slotNumbers[j, 2])
+                    {
+
+                    }
+                }
+            }
 
         }
     }
