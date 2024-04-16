@@ -127,7 +127,11 @@ class Program
                 {
                     if (slotNumbers[j, 0] == slotNumbers[j, 1] && slotNumbers[j, 1] == slotNumbers[j, 2])
                     {
-
+                        Console.WriteLine("\nYou got three in a row! You win!", j + 1);
+                        playerMoney += COST_PER_SPIN;
+                        numberOfWins++;
+                        amountWon++;
+                        break;
                     }
                 }
             }
