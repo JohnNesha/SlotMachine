@@ -125,7 +125,7 @@ class Program
             {
                 if (j == 0)
                 {
-                    if (slotNumbers[j, 0] == slotNumbers[j, 1] && slotNumbers[j, 1] == slotNumbers[j, 2])
+                    if (slotNumbers[0, j] == slotNumbers[1, j] && slotNumbers[1, j] == slotNumbers[2, j])
                     {
                         Console.WriteLine("\nYou got three in a row! You win!", j + 1);
                         playerMoney += COST_PER_SPIN;
