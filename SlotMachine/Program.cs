@@ -134,6 +134,13 @@ class Program
                         break;
                     }
                 }
+
+                else
+                {
+                    Console.WriteLine("\n\nTry Again.\n");
+                    Console.WriteLine("Hit the 'Y' button to spin again\n");
+                    Console.ReadKey();
+                }
             }
 
         }
