@@ -7,6 +7,7 @@ class Program
     public const char START_SPIN = 'Y';
     public const int VERTICAL_LINE = 3;
     public const int HORIZONTAL_LINE = 3;
+    public readonly Random ranNum = new Random();
 
     static void Main(string[] args)
     {
@@ -76,8 +77,6 @@ class Program
             double amountWon = 1.00;
 
             int[,] slotNumbers = new int[VERTICAL_LINE, HORIZONTAL_LINE];
-
-            Random ranNum = new Random();
 
             Console.WriteLine("\n");
 
