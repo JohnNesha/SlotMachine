@@ -7,12 +7,13 @@ class Program
     public const char START_SPIN = 'Y';
     public const int VERTICAL_LINE = 3;
     public const int HORIZONTAL_LINE = 3;
-    public readonly Random ranNum = new Random();
+    public const char ACCEPTED_KEY = 'Y';
+    public readonly Random RAN_NUM = new Random();
 
     static void Main(string[] args)
     {
         Console.WriteLine("Let's play Slot Machine!\n");
-        Console.WriteLine("Each spin costs $2.00.\n");
+        Console.WriteLine($"Each spin costs ${COST_PER_SPIN}.\n");
 
         //Amount entered from player to begin the game
         bool invalidAmount = false;
@@ -50,7 +51,7 @@ class Program
             }
         }
         //Player hits Y to start or spin the game 
-        Console.WriteLine("Hit the 'Y' button to spin\n");
+        Console.WriteLine($"Hit the ${ACCEPTED_KEY} button to spin\n");
         char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
 
         while (spinButton != START_SPIN)
@@ -58,7 +59,7 @@ class Program
             //If user enters any other letter or character besides 'Y' or 'y
             if (spinButton != START_SPIN)
             {
-                Console.WriteLine("\nInvalid character chosen. Please hit 'Y' to spin\n");
+                Console.WriteLine($"\nInvalid character chosen. Please hit ${ACCEPTED_KEY} to spin\n");
             }
             spinButton = char.ToUpper(Console.ReadKey().KeyChar);
         }
@@ -85,7 +86,7 @@ class Program
                 for (int j = 0; j < VERTICAL_LINE; j++)
                 {
                     //Numbers will display after spin 
-                    slotNumbers[i, j] = ranNum.Next(1, MAX_NUMBER + 1);
+                    slotNumbers[i, j] = RAN_NUM.Next(1, MAX_NUMBER + 1);
                 }
 
                 Console.WriteLine("\n");
