@@ -5,8 +5,8 @@ class Program
     public const double COST_PER_SPIN = 2.00;
     public const int MAX_NUMBER = 9;
     public const char START_SPIN = 'Y';
-    public const int VERTICAL_LINE = 3;
-    public const int HORIZONTAL_LINE = 3;
+    public const int VERTICAL_LINES = 3;
+    public const int HORIZONTAL_LINES = 3;
     public const char ACCEPTED_KEY = 'Y';
     public readonly Random RAN_NUM = new Random();
 
@@ -77,35 +77,35 @@ class Program
             int numberOfWins = 0;
             double amountWon = 1.00;
 
-            int[,] slotNumbers = new int[VERTICAL_LINE, HORIZONTAL_LINE];
+            int[,] slotNumbers = new int[VERTICAL_LINES, HORIZONTAL_LINES];
 
             Console.WriteLine("\n");
 
-            for (int i = 0; i < HORIZONTAL_LINE; i++)
+            for (int row = 0; row < HORIZONTAL_LINES; row++)
             {
-                for (int j = 0; j < VERTICAL_LINE; j++)
+                for (int col = 0; col < VERTICAL_LINES; col++)
                 {
                     //Numbers will display after spin 
-                    slotNumbers[i, j] = RAN_NUM.Next(1, MAX_NUMBER + 1);
+                    slotNumbers[row, col] = RAN_NUM.Next(1, MAX_NUMBER + 1);
                 }
 
                 Console.WriteLine("\n");
 
                 //Print Slot numbers
-                for (int j = 0; j < VERTICAL_LINE; j++)
+                for (int col = 0; col < VERTICAL_LINES; col++)
                 {
-                    Console.Write(slotNumbers[i, j] + " ");
+                    Console.Write(slotNumbers[row, col] + " ");
                 }
             }
 
             //Check for one win at a time
-            for (int i = 0; i < HORIZONTAL_LINE; i++)
+            for (int row = 0; row < HORIZONTAL_LINES; row++)
             {
-                if (i == 0)
+                if (row == 0)
                 {
-                    if (slotNumbers[i, 0] == slotNumbers[i, 1] && slotNumbers[i, 1] == slotNumbers[i, 2])
+                    if (slotNumbers[row, 0] == slotNumbers[row, 1] && slotNumbers[row, 1] == slotNumbers[row, 2])
                     {
-                        Console.WriteLine("\nYou got three in a row! You win!", i + 1);
+                        Console.WriteLine("\nYou got three in a row! You win!", row + 1);
                         playerMoney += COST_PER_SPIN;
                         numberOfWins++;
                         amountWon++;
@@ -121,13 +121,13 @@ class Program
                 }
 
             }
-            for (int j = 0; j < HORIZONTAL_LINE; j++)
+            for (int col = 0; col < HORIZONTAL_LINES; col++)
             {
-                if (j == 0)
+                if (col == 0)
                 {
-                    if (slotNumbers[0, j] == slotNumbers[1, j] && slotNumbers[1, j] == slotNumbers[2, j])
+                    if (slotNumbers[0, col] == slotNumbers[1, col] && slotNumbers[1, col] == slotNumbers[2, col])
                     {
-                        Console.WriteLine("\nYou got three in a row! You win!", j + 1);
+                        Console.WriteLine("\nYou got three in a row! You win!", col + 1);
                         playerMoney += COST_PER_SPIN;
                         numberOfWins++;
                         amountWon++;
