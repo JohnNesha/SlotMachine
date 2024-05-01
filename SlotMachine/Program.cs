@@ -16,21 +16,20 @@ class Program
         Console.WriteLine($"Each spin costs ${COST_PER_SPIN}.\n");
 
         //Amount entered from player to begin the game
-        bool invalidAmount = false;
+        
         double playerMoney = 0;
 
-        while (!invalidAmount)
+        while (true)
         {
             Console.Write("Enter an amount to begin the game: ");
             Console.WriteLine("\n");
+
+            //Read user input
             string userInput = Console.ReadLine();
 
             if (double.TryParse(userInput, out playerMoney))
             {
-                if (playerMoney >= COST_PER_SPIN)
-                {
-                    invalidAmount = true;
-                }
+                break;
             }
         }
 
