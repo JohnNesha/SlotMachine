@@ -56,10 +56,7 @@ class Program
         while (spinButton != START_SPIN)
         {
             //If user enters any other letter or character besides 'Y' or 'y
-            if (spinButton != START_SPIN)
-            {
-                Console.WriteLine($"\nInvalid character chosen. Please hit ${ACCEPTED_KEY} to spin\n");
-            }
+            Console.WriteLine($"\nInvalid character chosen. Please hit ${ACCEPTED_KEY} to spin\n");
             spinButton = char.ToUpper(Console.ReadKey().KeyChar);
         }
 
