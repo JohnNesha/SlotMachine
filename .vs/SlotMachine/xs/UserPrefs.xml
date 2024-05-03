@@ -1,14 +1,14 @@
-﻿<Properties StartupConfiguration="{3E7C6D21-CE39-44C9-AA18-1525F739E153}|Default" GitUserInfo="UsingGIT">
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{3E7C6D21-CE39-44C9-AA18-1525F739E153}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SlotMachine/Program.cs">
+    <Files>
+      <File FileName="SlotMachine/Program.cs" Line="62" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.SlotMachine PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SlotMachine/Program.cs">
-    <Files>
-      <File FileName="SlotMachine/Program.cs" Line="121" Column="18" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

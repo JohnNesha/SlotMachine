@@ -8,7 +8,7 @@ class Program
     public const int VERTICAL_LINES = 3;
     public const int HORIZONTAL_LINES = 3;
     public const char ACCEPTED_KEY = 'Y';
-    public readonly Random RAN_NUM = new Random();
+    public static readonly Random RAN_NUM = new Random();
 
     static void Main(string[] args)
     {
@@ -50,13 +50,13 @@ class Program
             }
         }
         //Player hits Y to start or spin the game 
-        Console.WriteLine($"Hit the ${ACCEPTED_KEY} button to spin\n");
+        Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin\n");
         char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
 
         while (spinButton != START_SPIN)
         {
             //If user enters any other letter or character besides 'Y' or 'y
-            Console.WriteLine($"\nInvalid character chosen. Please hit ${ACCEPTED_KEY} to spin\n");
+            Console.WriteLine($"\nInvalid character chosen. Please hit {ACCEPTED_KEY} to spin\n");
             spinButton = char.ToUpper(Console.ReadKey().KeyChar);
         }
 
