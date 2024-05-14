@@ -8,6 +8,9 @@ class Program
     public const int VERTICAL_LINES = 3;
     public const int HORIZONTAL_LINES = 3;
     public const char ACCEPTED_KEY = 'Y';
+    public const int FIRST_NUM = 0;
+    public const int SECOND_NUM = 1;
+    public const int THIRD_NUM = 2;
     public static readonly Random RAN_NUM = new Random();
 
     static void Main(string[] args)
@@ -99,14 +102,15 @@ class Program
             {
                 if (row == 0)
                 {
-                    if (slotNumbers[row, 0] == slotNumbers[row, 1] && slotNumbers[row, 1] == slotNumbers[row, 2])
+                    if (slotNumbers[row, FIRST_NUM] == slotNumbers[row, SECOND_NUM] && slotNumbers[row, SECOND_NUM] == slotNumbers[row, THIRD_NUM])
                     {
-                        Console.WriteLine("\nYou got three in a row! You win!", row + 1);
-                        playerMoney += COST_PER_SPIN;
-                        numberOfWins++;
-                        amountWon++;
-                        break;
-                    }
+                         Console.WriteLine("\nYou got three in a row! You win!", row + 1);
+                         playerMoney += COST_PER_SPIN;
+                         numberOfWins++;
+                         amountWon++;
+                         break;
+                                
+                    }  
                 }
 
                 else
@@ -121,7 +125,7 @@ class Program
             {
                 if (col == 0)
                 {
-                    if (slotNumbers[0, col] == slotNumbers[1, col] && slotNumbers[1, col] == slotNumbers[2, col])
+                    if (slotNumbers[FIRST_NUM, col] == slotNumbers[SECOND_NUM, col] && slotNumbers[SECOND_NUM, col] == slotNumbers[THIRD_NUM, col])
                     {
                         Console.WriteLine("\nYou got three in a row! You win!", col + 1);
                         playerMoney += COST_PER_SPIN;
