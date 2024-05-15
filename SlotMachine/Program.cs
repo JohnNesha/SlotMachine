@@ -102,14 +102,16 @@ class Program
             {
                 if (row == 0)
                 {
-                    if (slotNumbers[row, FIRST_NUM] == slotNumbers[row, SECOND_NUM] && slotNumbers[row, SECOND_NUM] == slotNumbers[row, THIRD_NUM])
+                    if (slotNumbers[row, FIRST_NUM] == slotNumbers[row, SECOND_NUM])
                     {
-                         Console.WriteLine("\nYou got three in a row! You win!", row + 1);
-                         playerMoney += COST_PER_SPIN;
-                         numberOfWins++;
-                         amountWon++;
-                         break;
-                                
+                        if (slotNumbers[row, SECOND_NUM] == slotNumbers[row, THIRD_NUM])
+                        {
+                            Console.WriteLine("\nYou got three in a row! You win!", row + 1);
+                            playerMoney += COST_PER_SPIN;
+                            numberOfWins++;
+                            amountWon++;
+                            break;
+                        }
                     }  
                 }
 
@@ -125,13 +127,16 @@ class Program
             {
                 if (col == 0)
                 {
-                    if (slotNumbers[FIRST_NUM, col] == slotNumbers[SECOND_NUM, col] && slotNumbers[SECOND_NUM, col] == slotNumbers[THIRD_NUM, col])
+                    if (slotNumbers[FIRST_NUM, col] == slotNumbers[SECOND_NUM, col])
                     {
-                        Console.WriteLine("\nYou got three in a row! You win!", col + 1);
-                        playerMoney += COST_PER_SPIN;
-                        numberOfWins++;
-                        amountWon++;
-                        break;
+                        if (slotNumbers[SECOND_NUM, col] == slotNumbers[THIRD_NUM, col])
+                        {
+                            Console.WriteLine("\nYou got three in a row! You win!", col + 1);
+                            playerMoney += COST_PER_SPIN;
+                            numberOfWins++;
+                            amountWon++;
+                            break;
+                        }
                     }
                 }
 
