@@ -19,7 +19,7 @@ class Program
         Console.WriteLine($"Each spin costs ${COST_PER_SPIN}.\n");
 
         //Amount entered from player to begin the game
-        
+
         double playerMoney = 0;
 
         while (true)
@@ -98,56 +98,68 @@ class Program
             }
 
             //Check for one win at a time
+            //loops checks each element in array to see if theres a match
+            //checks whether first number matches the other two numbers in row
             for (int row = 0; row < HORIZONTAL_LINES; row++)
             {
                 for (int col = 0; col < VERTICAL_LINES; col++)
                 {
                     if (slotNumbers[row, FIRST_NUM] == slotNumbers[row, FIRST_NUM + 1])
                     {
-                        if (col < HORIZONTAL_LINES - 2)
+                        if (col < HORIZONTAL_LINES - 1)
                         {
-                            Console.WriteLine("\nYou got three in a row! You win!", row + 1);
-                            playerMoney += COST_PER_SPIN;
-                            numberOfWins++;
-                            amountWon++;
-                            break;
+                            if (slotNumbers[row, col] == slotNumbers[row, col + 1])
+                            {
+                                if (col < HORIZONTAL_LINES - 2)
+                                {
+                                    if (slotNumbers[row, col + 1] == slotNumbers[row, col + 2])
+                                    {
+                                        Console.WriteLine("\nYou got three in a row! You win!", row + 1);
+                                        playerMoney += COST_PER_SPIN;
+                                        numberOfWins++;
+                                        amountWon++;
+                                        break;
+                                    }
+                                }
+                            }
                         }
-                    }  
-                }
 
-                else
-                {
-                    Console.WriteLine("\n\nTry Again.\n");
-                    Console.WriteLine("Hit the 'Y' button to spin again\n");
-                    Console.ReadKey();
-                }
+                    }
 
-            }
-            for (int col = 0; col < HORIZONTAL_LINES; col++)
-            {
-                if (col == 0)
-                {
-                    if (slotNumbers[FIRST_NUM, col] == slotNumbers[SECOND_NUM, col])
+                    else
                     {
-                        if (slotNumbers[SECOND_NUM, col] == slotNumbers[THIRD_NUM, col])
+                        Console.WriteLine("\n\nTry Again.\n");
+                        Console.WriteLine("Hit the 'Y' button to spin again\n");
+                        Console.ReadKey();
+                    }
+
+                }
+                for (int col = 0; col < HORIZONTAL_LINES; col++)
+                {
+                    if (col == 0)
+                    {
+                        if (slotNumbers[FIRST_NUM, col] == slotNumbers[SECOND_NUM, col])
                         {
-                            Console.WriteLine("\nYou got three in a row! You win!", col + 1);
-                            playerMoney += COST_PER_SPIN;
-                            numberOfWins++;
-                            amountWon++;
-                            break;
+                            if (slotNumbers[SECOND_NUM, col] == slotNumbers[THIRD_NUM, col])
+                            {
+                                Console.WriteLine("\nYou got three in a row! You win!", col + 1);
+                                playerMoney += COST_PER_SPIN;
+                                numberOfWins++;
+                                amountWon++;
+                                break;
+                            }
                         }
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("\n\nTry Again.\n");
+                        Console.WriteLine("Hit the 'Y' button to spin again\n");
+                        Console.ReadKey();
                     }
                 }
 
-                else
-                {
-                    Console.WriteLine("\n\nTry Again.\n");
-                    Console.WriteLine("Hit the 'Y' button to spin again\n");
-                    Console.ReadKey();
-                }
             }
-
         }
     }
 }
