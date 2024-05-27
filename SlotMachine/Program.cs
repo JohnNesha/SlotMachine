@@ -96,36 +96,31 @@ class Program
                     Console.Write(slotNumbers[row, col] + " ");
                 }
             }
-
-            //Check for one win at a time
-            //loops checks each element in array to see if theres a match
-            //checks whether first number matches the other two numbers in row
-            for (int row = 0; row < HORIZONTAL_LINES; row++)
-            {
-                for (int col = 0; col < VERTICAL_LINES; col++)
+                //Check for one win at a time
+                //loops checks each element in array to see if theres a match
+                //checks whether first number matches the other two numbers in row
+                for (int row = 0; row < slotNumbers.GetLength(1); row++)
                 {
-                    if (slotNumbers[row, FIRST_NUM] == slotNumbers[row, FIRST_NUM + 1])
+                    bool match = false;
+                    for (int col = 0; col < slotNumbers.GetLength(0); col++)
                     {
-                        if (col < HORIZONTAL_LINES - 1)
+                        if (slotNumbers[row,FIRST_NUM] == slotNumbers[row,SECOND_NUM])
                         {
-                            if (slotNumbers[row, col] == slotNumbers[row, col + 1])
-                            {
-                                if (col < HORIZONTAL_LINES - 2)
-                                {
-                                    if (slotNumbers[row, col + 1] == slotNumbers[row, col + 2])
-                                    {
-                                        Console.WriteLine("\nYou got three in a row! You win!", row + 1);
-                                        playerMoney += COST_PER_SPIN;
-                                        numberOfWins++;
-                                        amountWon++;
-                                        break;
-                                    }
-                                }
-                            }
+                            if (match)
+                                break;
                         }
 
+                        match = true;
+                        {
+                            Console.WriteLine("\nYou got three in a row! You win!", row + 1);
+                            playerMoney += COST_PER_SPIN;
+                            numberOfWins++;
+                            amountWon++;
+                            break;
+                        }
                     }
-
+                }
+        
                     else
                     {
                         Console.WriteLine("\n\nTry Again.\n");
