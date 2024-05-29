@@ -129,20 +129,24 @@ class Program
                     }
 
                 }
-                for (int col = 0; col < HORIZONTAL_LINES; col++)
+                for (int col = 0; col < slotNumbers.GetLength(0); col++)
                 {
-                    if (col == 0)
+                    bool match = false;
+                    for (int row = 0; row < slotNumbers.GetLength(1); row++)
+                    {  
+                    if (match)
+                    break;
+                    }
+
+                    match = true;
+                        
                     {
-                        if (slotNumbers[FIRST_NUM, col] == slotNumbers[SECOND_NUM, col])
-                        {
-                            if (slotNumbers[SECOND_NUM, col] == slotNumbers[THIRD_NUM, col])
-                            {
-                                Console.WriteLine("\nYou got three in a row! You win!", col + 1);
-                                playerMoney += COST_PER_SPIN;
-                                numberOfWins++;
-                                amountWon++;
-                                break;
-                            }
+                        Console.WriteLine("\nYou got three in a row! You win!", col + 1);
+                        playerMoney += COST_PER_SPIN;
+                        numberOfWins++;
+                        amountWon++;
+                        break;
+                    }
                         }
                     }
 
