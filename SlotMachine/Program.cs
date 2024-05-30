@@ -96,50 +96,59 @@ class Program
                     Console.Write(slotNumbers[row, col] + " ");
                 }
             }
-                //Check for one win at a time
-                //loops checks each element in array to see if theres a match
-                //checks whether first number matches the other two numbers in row
-                for (int row = 0; row < slotNumbers.GetLength(1); row++)
+            //Check for one win at a time
+            //loops checks each element in array to see if theres a match
+            //checks whether first number matches the other two numbers in row
+            for (int row = 0; row < slotNumbers.GetLength(1); row++)
+            {
+                bool match = false;
+                for (int col = 0; col < slotNumbers.GetLength(0); col++)
                 {
-                    bool match = false;
-                    for (int col = 0; col < slotNumbers.GetLength(0); col++)
+                    if (slotNumbers[row, FIRST_NUM] == slotNumbers[row, SECOND_NUM])
                     {
-                        if (slotNumbers[row,FIRST_NUM] == slotNumbers[row,SECOND_NUM])
+                        if (match)
                         {
-                            if (match)
-                                break;
-                        }
-
-                        match = true;
-                        {
-                            Console.WriteLine("\nYou got three in a row! You win!", row + 1);
-                            playerMoney += COST_PER_SPIN;
-                            numberOfWins++;
-                            amountWon++;
                             break;
                         }
                     }
-                }
-        
-                    else
-                    {
-                        Console.WriteLine("\n\nTry Again.\n");
-                        Console.WriteLine("Hit the 'Y' button to spin again\n");
-                        Console.ReadKey();
-                    }
 
+                    match = true;
+
+                    {
+                        Console.WriteLine("\nYou got three in a row! You win!", row + 1);
+                        playerMoney += COST_PER_SPIN;
+                        numberOfWins++;
+                        amountWon++;
+                        break;
+                    }
                 }
-                for (int col = 0; col < slotNumbers.GetLength(0); col++)
+
+                if (match)
                 {
-                    bool match = false;
-                    for (int row = 0; row < slotNumbers.GetLength(1); row++)
-                    {  
-                    if (match)
                     break;
+                }
+                Console.WriteLine("\n\nTry Again.\n");
+                Console.WriteLine("Hit the 'Y' button to spin again\n");
+                Console.ReadKey();
+            }
+
+            for (int col = 0; col < slotNumbers.GetLength(0); col++)
+            {
+                bool match = false;
+                for (int row = 0; row < slotNumbers.GetLength(1); row++)
+                {
+
+                    if (slotNumbers[col, FIRST_NUM] == slotNumbers[col, SECOND_NUM])
+                    {
+
+                        if (match)
+                        {
+                            break;
+                        }
                     }
 
                     match = true;
-                        
+
                     {
                         Console.WriteLine("\nYou got three in a row! You win!", col + 1);
                         playerMoney += COST_PER_SPIN;
@@ -147,18 +156,19 @@ class Program
                         amountWon++;
                         break;
                     }
-                        }
-                    }
 
-                    else
-                    {
-                        Console.WriteLine("\n\nTry Again.\n");
-                        Console.WriteLine("Hit the 'Y' button to spin again\n");
-                        Console.ReadKey();
-                    }
                 }
 
+                if (match)
+                {
+                    break;
+                }
+                Console.WriteLine("\n\nTry Again.\n");
+                Console.WriteLine("Hit the 'Y' button to spin again\n");
+                Console.ReadKey();
+
             }
+        
         }
     }
 }
