@@ -115,16 +115,12 @@ class Program
                     }
                 }
 
-                if (match)
-                {
-                    break;
-                }
-
                 if (!match)
                 {
                     Console.WriteLine("\n\nTry Again.\n");
                     Console.WriteLine("Hit the 'Y' button to spin again\n");
                     Console.ReadKey();
+                    break;
                 }
             }
             for (int col = 0; col < slotNumbers.GetLength(0); col++)
@@ -142,17 +138,12 @@ class Program
                         break;
                     }
                 }
-
-                if (match)
-                {
-                    break;
-                }
-
                 if (!match)
                 {
                     Console.WriteLine("\n\nTry Again.\n");
                     Console.WriteLine("Hit the 'Y' button to spin again\n");
                     Console.ReadKey();
+                    break;
                 }
 
             }
