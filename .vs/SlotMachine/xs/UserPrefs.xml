@@ -2,12 +2,14 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="SlotMachine/Program.cs">
     <Files>
-      <File FileName="SlotMachine/Program.cs" Line="103" Column="36" />
+      <File FileName="SlotMachine/Program.cs" Line="107" Column="85" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="SlotMachine" expanded="True" selected="True" />
+          <Node name="SlotMachine">
+            <Node name="SlotMachine" expanded="True" />
+          </Node>
         </State>
       </Pad>
     </Pads>

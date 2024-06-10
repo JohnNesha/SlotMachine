@@ -102,6 +102,7 @@ class Program
             bool match = false;
             for (int row = 0; row < slotNumbers.GetLength(1); row++)
             {
+                match = false;
                 for (int col = 0; col < slotNumbers.GetLength(0); col++)
                 {
                     if (slotNumbers[row, FIRST_NUM] == slotNumbers[row, SECOND_NUM])
@@ -125,6 +126,7 @@ class Program
             }
             for (int col = 0; col < slotNumbers.GetLength(0); col++)
             {
+                match = false;
                 for (int row = 0; row < slotNumbers.GetLength(1); row++)
                 {
 
