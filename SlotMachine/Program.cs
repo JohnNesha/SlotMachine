@@ -108,7 +108,7 @@ class Program
                     if (slotNumbers[row, FIRST_NUM] == slotNumbers[row, SECOND_NUM])
                     {
                         match = true;
-                        Console.WriteLine("\nYou got three in a row! You win!", row + 1);
+                        Console.WriteLine("\nYou got three in a row! You win!", col + 1);
                         playerMoney += COST_PER_SPIN;
                         numberOfWins++;
                         amountWon++;
@@ -116,7 +116,11 @@ class Program
                     }
                 }
 
-                if (!match)
+                if (match)
+                {
+                    break;
+                }
+                else
                 {
                     Console.WriteLine("\n\nTry Again.\n");
                     Console.WriteLine("Hit the 'Y' button to spin again\n");
@@ -140,7 +144,12 @@ class Program
                         break;
                     }
                 }
-                if (!match)
+
+                if (match)
+                {
+                    break;
+                }
+                else
                 {
                     Console.WriteLine("\n\nTry Again.\n");
                     Console.WriteLine("Hit the 'Y' button to spin again\n");
