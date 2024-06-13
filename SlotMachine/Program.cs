@@ -56,11 +56,19 @@ class Program
         Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin\n");
         char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
 
-        while (spinButton != START_SPIN)
+        do
+        {
+            spinButton = char.ToUpper(Console.ReadKey().KeyChar);
+            if (spinButton != START_SPIN)
+                Console.WriteLine($"\nInvalid character chosen. Please hit {ACCEPTED_KEY} to spin\n");
+
+        }
+
+        while (spinButton != START_SPIN);
         {
             //If user enters any other letter or character besides 'Y' or 'y
-            Console.WriteLine($"\nInvalid character chosen. Please hit {ACCEPTED_KEY} to spin\n");
-            spinButton = char.ToUpper(Console.ReadKey().KeyChar);
+            //Console.WriteLine($"\nInvalid character chosen. Please hit {ACCEPTED_KEY} to spin\n");
+            //spinButton = char.ToUpper(Console.ReadKey().KeyChar);
         }
 
         Console.WriteLine("\n");
@@ -105,7 +113,7 @@ class Program
                 match = false;
                 for (int col = 0; col < slotNumbers.GetLength(0); col++)
                 {
-                    if (slotNumbers[row, FIRST_NUM] == slotNumbers[row, SECOND_NUM])
+                    if (slotNumbers[row, FIRST_NUM] == slotNumbers[row, SECOND_NUM] && slotNumbers[row, SECOND_NUM] == slotNumbers[row, THIRD_NUM])
                     {
                         match = true;
                         Console.WriteLine("\nYou got three in a row! You win!", col + 1);
@@ -134,7 +142,7 @@ class Program
                 for (int row = 0; row < slotNumbers.GetLength(1); row++)
                 {
 
-                    if (slotNumbers[col, FIRST_NUM] == slotNumbers[col, SECOND_NUM])
+                    if (slotNumbers[FIRST_NUM, col] == slotNumbers[SECOND_NUM, col] && slotNumbers[SECOND_NUM, col] == slotNumbers[THIRD_NUM, col]) 
                     {
                         match = true;
                         Console.WriteLine("\nYou got three in a row! You win!", col + 1);
