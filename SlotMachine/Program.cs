@@ -102,12 +102,14 @@ class Program
             //loops checks each element in array to see if theres a match
             //checks whether first number matches the other two numbers in row
             bool match = false;
+
             for (int row = 0; row < slotNumbers.GetLength(1); row++)
             {
                 match = false;
+
                 for (int col = 0; col < slotNumbers.GetLength(0); col++)
                 {
-                    if (slotNumbers[row, FIRST_NUM] == slotNumbers[row, SECOND_NUM] && slotNumbers[row, SECOND_NUM] == slotNumbers[row, THIRD_NUM])
+                    if (slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row + 1, col] == slotNumbers[row + 2, col])
                     {
                         match = true;
                         Console.WriteLine("\nYou got three in a row! You win!", col + 1);
@@ -130,25 +132,31 @@ class Program
                     break;
                 }
             }
-            for (int col =0; col < slotNumbers.GetLength(0); col++)
+            for (int col = 0; col < slotNumbers.GetLength(0); col++)
             {
-                if (slotNumbers[row + 1, col] == slotNumbers[row + 2, col] && slotNumbers[row + 1, col] == slotNumbers[row + 3, col])
+                match = false;
+
+                for (int row = 0; row < slotNumbers.GetLength(1); row++)
                 {
-                    match = true;
-                    Console.WriteLine("\nYou got three in a row diagonally! You win!", col + 1);
-                    playerMoney += COST_PER_SPIN;
-                    numberOfWins++;
-                    amountWon += COST_PER_SPIN;
+                    if (slotNumbers[row + 1, col] == slotNumbers[row + 2, col] && slotNumbers[row + 1, col] == slotNumbers[row + 3, col])
+                    {
+                        match = true;
+                        Console.WriteLine("\nYou got three in a row diagonally! You win!", col + 1);
+                        playerMoney += COST_PER_SPIN;
+                        numberOfWins++;
+                        amountWon += COST_PER_SPIN;
+                    }
                 }
             }
 
             for (int col = 0; col < slotNumbers.GetLength(0); col++)
             {
                match = false;
+
                 for (int row = 0; row < slotNumbers.GetLength(1); row++)
                 {
 
-                    if (slotNumbers[FIRST_NUM, col] == slotNumbers[SECOND_NUM, col] && slotNumbers[SECOND_NUM, col] == slotNumbers[THIRD_NUM, col]) 
+                    if (slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row + 1, col] == slotNumbers[row + 2, col]) 
                     {
                         match = true;
                         Console.WriteLine("\nYou got three in a row! You win!", col + 1);
@@ -157,11 +165,7 @@ class Program
                         amountWon++;
                         break;
                     }
-                }
-                for (int row = 0; row < slotNumbers.GetLength(1); row++)
-                {
-                    match = false;
-                    for (int col = 0; col < slotNumbers.GetLength(0); col++)
+             
                     {
                         if (slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row, col] == slotNumbers[row + 2, col + 1])
                         {
@@ -170,6 +174,7 @@ class Program
                             playerMoney += COST_PER_SPIN;
                             numberOfWins++;
                             amountWon += COST_PER_SPIN;
+                            break;
                         }
                     }
                 }
