@@ -138,7 +138,7 @@ class Program
 
                 for (int row = 0; row < slotNumbers.GetLength(1); row++)
                 {
-                    if (slotNumbers[row + 1, col] == slotNumbers[row + 2, col] && slotNumbers[row + 1, col] == slotNumbers[row + 3, col])
+                    if (slotNumbers[row,col] < 2 && slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row, col] == slotNumbers[row + 2, col])
                     {
                         diagonalMatch = true;
                         Console.WriteLine("\nYou got three in a row diagonally! You win!", col + 1);
@@ -166,7 +166,7 @@ class Program
             {
                 bool columnMatch = false;
 
-                for (int row = 0; row < slotNumbers.GetLength(1); row++)
+                for (int row = 0; row < slotNumbers.GetLength(1) -2; row++)
                 {
 
                     if (slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row + 1, col] == slotNumbers[row + 2, col])
