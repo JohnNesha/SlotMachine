@@ -19,7 +19,6 @@ class Program
         Console.WriteLine($"Each spin costs ${COST_PER_SPIN}.\n");
 
         //Amount entered from player to begin the game
-
         double playerMoney = 0;
 
         while (true)
@@ -37,7 +36,6 @@ class Program
         }
 
         // double playerMoney = double.Parse(Console.ReadLine());
-
         while (true)
         {
             if (playerMoney >= COST_PER_SPIN)
@@ -66,7 +64,9 @@ class Program
 
         Console.WriteLine("\n");
 
-        while (playerMoney > 0)
+        bool continuePlaying = spinButton == START_SPIN;
+
+        while (continuePlaying)
         {
             playerMoney -= COST_PER_SPIN;
 
@@ -88,7 +88,6 @@ class Program
                     //Numbers will display after spin 
                     slotNumbers[row, col] = RAN_NUM.Next(1, MAX_NUMBER + 1);
                 }
-
 
                 Console.WriteLine("\n");
 
@@ -127,7 +126,7 @@ class Program
                 else
                 {
                     Console.WriteLine("\n\nTry Again.\n");
-                    Console.WriteLine("Hit the 'Y' button to spin again\n");
+                    Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin again\n");
                     Console.ReadKey();
                     break;
                 }
@@ -156,7 +155,7 @@ class Program
                 else
                 {
                     Console.WriteLine("\n\nTry Again.\n");
-                    Console.WriteLine("Hit the 'Y' button to spin again\n");
+                    Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin again\n");
                     Console.ReadKey();
                     break;
                 }
@@ -187,11 +186,10 @@ class Program
                 else
                 {
                     Console.WriteLine("\n\nTry Again.\n");
-                    Console.WriteLine("Hit the 'Y' button to spin again\n");
+                    Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin again\n");
                     Console.ReadKey();
                     break;
                 }
-
             }
 
             for (int row = 0; row < slotNumbers.GetLength(1); row++)
@@ -217,14 +215,12 @@ class Program
                 else
                 {
                     Console.WriteLine("\n\nTry Again.\n");
-                    Console.WriteLine("Hit the 'Y' button to spin again\n");
+                    Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin again\n");
                     spinButton = char.ToUpper(Console.ReadKey().KeyChar);
                     Console.ReadKey();
                     break;
                 }
-
             }
-
         }
 
         Console.WriteLine("You have run out of money! Better luck next time.");
