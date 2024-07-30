@@ -2,15 +2,12 @@
 
 class Program
 {
-    public const double COST_PER_SPIN = 2.00;
+    public const double COST_PER_SPIN = 2.00; //Example Cost
     public const int MAX_NUMBER = 9;
     public const char START_SPIN = 'Y';
     public const int VERTICAL_LINES = 3;
     public const int HORIZONTAL_LINES = 3;
     public const char ACCEPTED_KEY = 'Y';
-    public const int FIRST_NUM = 0;
-    public const int SECOND_NUM = 1;
-    public const int THIRD_NUM = 2;
     public static readonly Random RAN_NUM = new Random();
 
     static void Main(string[] args)
@@ -50,8 +47,23 @@ class Program
                 playerMoney = double.Parse(Console.ReadLine());
             }
         }
+
+        //Ask Player what type of line to play
+        {
+            Console.WriteLine("What type of line or lines would you like to play? Please select an option: " +
+            "(H) All Horizontal Lines, " +
+            "(HC) Horizontal Center Line, " +
+            "(V) All Vertical Lines, " +
+            "(VC) Vertical Center Line, " +
+            "(DL) Diagonal Left Line, " +
+            "(DR) Diagonal Right Line, " +
+            "or (D) All Diagonal lines\n");
+
+            char gameType = char.ToUpper(Console.ReadKey().KeyChar);
+        }
+
         //Player hits Y to start or spin the game 
-        Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin\n");
+        Console.WriteLine($"\n\nHit the {ACCEPTED_KEY} button to spin\n");
         char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
 
 
