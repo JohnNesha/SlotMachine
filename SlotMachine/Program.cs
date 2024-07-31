@@ -9,6 +9,14 @@ class Program
     public const int HORIZONTAL_LINES = 3;
     public const char ACCEPTED_KEY = 'Y';
     public static readonly Random RAN_NUM = new Random();
+    public const char ANY_HORIZONTAL_WIN = 'H';
+    public const char ANY_VERTICAL_WIN = 'V';
+    public const string HORIZONTAL_CENTER_WIN = "HC";
+    public const string VERTICAL_CENTER_WIN = "VC";
+    public const char ANY_DIAGONAL_WIN = 'D';
+    public const string DIAGONAL_LEFT_WIN = "DL";
+    public const string DIAGONAL_RIGHT_WIN = "DR";
+
 
     static void Main(string[] args)
     {
@@ -60,12 +68,17 @@ class Program
             "or (D) All Diagonal lines\n");
 
             char gameType = char.ToUpper(Console.ReadKey().KeyChar);
+
+            //If player enter line choice to play
+            if (gameType == ANY_HORIZONTAL_WIN)
+            {
+
+            }
         }
 
         //Player hits Y to start or spin the game 
         Console.WriteLine($"\n\nHit the {ACCEPTED_KEY} button to spin\n");
         char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
-
 
         while (spinButton != START_SPIN)
         {

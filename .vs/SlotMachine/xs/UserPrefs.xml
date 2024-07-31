@@ -2,8 +2,15 @@
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench ActiveDocument="SlotMachine/Program.cs">
     <Files>
-      <File FileName="SlotMachine/Program.cs" Line="60" Column="39" />
+      <File FileName="SlotMachine/Program.cs" Line="66" Column="5" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SlotMachine" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
