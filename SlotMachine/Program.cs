@@ -9,14 +9,17 @@ class Program
     public const int HORIZONTAL_LINES = 3;
     public const char ACCEPTED_KEY = 'Y';
     public static readonly Random RAN_NUM = new Random();
-    public const char ANY_HORIZONTAL_WIN = 'H';
-    public const char ANY_VERTICAL_WIN = 'V';
-    public const string HORIZONTAL_CENTER_WIN = "HC";
-    public const string VERTICAL_CENTER_WIN = "VC";
-    public const char ANY_DIAGONAL_WIN = 'D';
-    public const string DIAGONAL_LEFT_WIN = "DL";
-    public const string DIAGONAL_RIGHT_WIN = "DR";
-
+  
+    public enum TypeOfGamePlay
+    {
+        AllHorizontalLines,
+        HorizontalCenterLine,
+        AllVerticalLines,
+        VerticalCenterLine,
+        DiagonalLeftLine,
+        DiagonalRightLine,
+        AllDiagonalLines
+    }
 
     static void Main(string[] args)
     {
@@ -54,21 +57,18 @@ class Program
                 Console.WriteLine($"You have entered ${playerMoney}. Please enter more money to begin the game.\n");
                 playerMoney = double.Parse(Console.ReadLine());
             }
-        }
-
         //Ask Player what type of line to play
-        {
             Console.WriteLine("What type of line or lines would you like to play? Please select an option: " +
-            "(H) All Horizontal Lines, " +
-            "(HC) Horizontal Center Line, " +
-            "(V) All Vertical Lines, " +
-            "(VC) Vertical Center Line, " +
-            "(DL) Diagonal Left Line, " +
-            "(DR) Diagonal Right Line, " +
-            "or (D) All Diagonal lines\n");
+            "(0) All Horizontal Lines, " +
+            "(1) Horizontal Center Line, " +
+            "(2) All Vertical Lines, " +
+            "(3) Vertical Center Line, " +
+            "(4) Diagonal Left Line, " +
+            "(5) Diagonal Right Line, " +
+            "(6) All Diagonal lines\n");
 
-            string gameType = Console.ReadLine().ToUpper();
-  
+            string gameTypeString = Console.ReadLine().ToUpper();
+            TypeOfGamePlay gameType;
         }
 
         //Player hits Y to start or spin the game 
@@ -77,7 +77,7 @@ class Program
 
         while (spinButton != START_SPIN)
         {
-            //If user enters any other letter or character besides 'Y' or 'y
+            //If user enters any other letter or character besides 'Y' 
             Console.WriteLine($"\nInvalid character chosen. Please hit {ACCEPTED_KEY} to spin\n");
             spinButton = char.ToUpper(Console.ReadKey().KeyChar);
         }
@@ -187,7 +187,6 @@ class Program
                     break;
                 }
             }
-
                 if (gameType == ANY_VERTICAL_WIN || gameType == VERTICAL_CENTER_WIN)
                 {
                     for (int col = 0; col < slotNumbers.GetLength(0); col++)
