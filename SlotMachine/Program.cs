@@ -9,7 +9,7 @@ class Program
     public const int HORIZONTAL_LINES = 3;
     public const char ACCEPTED_KEY = 'Y';
     public static readonly Random RAN_NUM = new Random();
-  
+
     public enum TypeOfGamePlay
     {
         AllHorizontalLines,
@@ -22,6 +22,7 @@ class Program
     }
 
     static void Main(string[] args)
+
     {
         Console.WriteLine("Let's play Slot Machine!\n");
         Console.WriteLine($"Each spin costs ${COST_PER_SPIN}.\n");
@@ -57,157 +58,100 @@ class Program
                 Console.WriteLine($"You have entered ${playerMoney}. Please enter more money to begin the game.\n");
                 playerMoney = double.Parse(Console.ReadLine());
             }
-        //Ask Player what type of line to play
-            Console.WriteLine("What type of line or lines would you like to play? Please select an option: " +
-            "(0) All Horizontal Lines, " +
-            "(1) Horizontal Center Line, " +
-            "(2) All Vertical Lines, " +
-            "(3) Vertical Center Line, " +
-            "(4) Diagonal Left Line, " +
-            "(5) Diagonal Right Line, " +
-            "(6) All Diagonal lines\n");
-
-            string gameTypeString = Console.ReadLine().ToUpper();
-            TypeOfGamePlay gameType;
-        }
-
-        //Player hits Y to start or spin the game 
-        Console.WriteLine($"\n\nHit the {ACCEPTED_KEY} button to spin\n");
-        char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
-
-        while (spinButton != START_SPIN)
-        {
-            //If user enters any other letter or character besides 'Y' 
-            Console.WriteLine($"\nInvalid character chosen. Please hit {ACCEPTED_KEY} to spin\n");
-            spinButton = char.ToUpper(Console.ReadKey().KeyChar);
-        }
-
-        Console.WriteLine("\n");
-
-        bool continuePlaying = spinButton == START_SPIN;
-
-        while (continuePlaying)
-        {
-            playerMoney -= COST_PER_SPIN;
-
-            Console.WriteLine("\nSpinning...");
-            Console.WriteLine("\nSpinning...");
-
-            //Insert numbers into 2DArray using Random Numbers
-            int numberOfWins = 0;
-            double amountWon = 1.00;
-
-            int[,] slotNumbers = new int[VERTICAL_LINES, HORIZONTAL_LINES];
-
-            Console.WriteLine("\n");
-
-            for (int row = 0; row < HORIZONTAL_LINES; row++)
+            //Ask Player what type of line to play
+            while (true)
             {
-                for (int col = 0; col < VERTICAL_LINES; col++)
+                Console.WriteLine("What type of line or lines would you like to play? Please select an option: " +
+                "(0) All Horizontal Lines, " +
+                "(1) Horizontal Center Line, " +
+                "(2) All Vertical Lines, " +
+                "(3) Vertical Center Line, " +
+                "(4) Diagonal Left Line, " +
+                "(5) Diagonal Right Line, " +
+                "(6) All Diagonal lines\n");
+
+                string gameTypeString = Console.ReadLine().ToUpper();
+                TypeOfGamePlay gameType;
+
+                if (!Enum.TryParse(gameTypeString, out gameType))
                 {
-                    //Numbers will display after spin 
-                    slotNumbers[row, col] = RAN_NUM.Next(1, MAX_NUMBER + 1);
+                    Console.WriteLine("Invalid selection. Please choose a valid option.");
+                    continue;
+                }
+
+                //Player hits Y to start or spin the game 
+                Console.WriteLine($"\n\nHit the {ACCEPTED_KEY} button to spin\n");
+                char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
+
+                while (spinButton != START_SPIN)
+                {
+                    //If user enters any other letter or character besides 'Y' 
+                    Console.WriteLine($"\nInvalid character chosen. Please hit {ACCEPTED_KEY} to spin\n");
+                    spinButton = char.ToUpper(Console.ReadKey().KeyChar);
                 }
 
                 Console.WriteLine("\n");
 
-                //Print Slot numbers
-                for (int col = 0; col < VERTICAL_LINES; col++)
-                {
-                    Console.Write(slotNumbers[row, col] + " ");
-                }
-            }
-            //Check for one win at a time
-            //loops checks each element in array to see if theres a match
-            //checks whether first number matches the other two numbers in row
-            bool rowMatch = false;
+                bool continuePlaying = spinButton == START_SPIN;
 
-            if (gameType == ANY_HORIZONTAL_WIN || gameType == HORIZONTAL_CENTER_WIN)
-            {
-                for (int row = 0; row < slotNumbers.GetLength(1); row++)
+                while (continuePlaying)
                 {
-                    rowMatch = false;
+                    playerMoney -= COST_PER_SPIN;
 
-                    for (int col = 0; col < slotNumbers.GetLength(0); col++)
+                    Console.WriteLine("\nSpinning...");
+                    Console.WriteLine("\nSpinning...");
+
+                    //Insert numbers into 2DArray using Random Numbers
+                    int numberOfWins = 0;
+                    double amountWon = 1.00;
+
+                    int[,] slotNumbers = new int[VERTICAL_LINES, HORIZONTAL_LINES];
+
+                    Console.WriteLine("\n");
+
+                    for (int row = 0; row < HORIZONTAL_LINES; row++)
                     {
-                        if (slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row + 1, col] == slotNumbers[row + 2, col])
+                        for (int col = 0; col < VERTICAL_LINES; col++)
                         {
-                            rowMatch = true;
-                            Console.WriteLine("\nYou got three in a row! You win!", col + 1);
-                            playerMoney += COST_PER_SPIN;
-                            numberOfWins++;
-                            amountWon++;
-                            break;
+                            //Numbers will display after spin 
+                            slotNumbers[row, col] = RAN_NUM.Next(1, MAX_NUMBER + 1);
+                        }
+
+                        Console.WriteLine("\n");
+
+                        //Print Slot numbers
+                        for (int col = 0; col < VERTICAL_LINES; col++)
+                        {
+                            Console.Write(slotNumbers[row, col] + " ");
                         }
                     }
-                }
+                    //Check for one win at a time
+                    //loops checks each element in array to see if theres a match
+                    //checks whether first number matches the other two numbers in row
+                    bool rowMatch = false;
 
-                if (rowMatch)
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("\n\nTry Again.\n");
-                    Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin again\n");
-                    Console.ReadKey();
-                    break;
-                }
-            }
-
-            if (gameType == ANY_DIAGONAL_WIN)
-            {
-                for (int col = 0; col < slotNumbers.GetLength(0); col++)
-                {
-                    bool diagonalMatch = false;
-
-                    for (int row = 0; row < slotNumbers.GetLength(1); row++)
+                    if (gameType == TypeOfGamePlay.AllHorizontalLines || gameType == TypeOfGamePlay.HorizontalCenterLine)
                     {
-                        if (slotNumbers[row, col] < 2 && slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row, col] == slotNumbers[row + 2, col])
+                        //Process Horizontal Wins
+                        for (int row = 0; row < slotNumbers.GetLength(1); row++)
                         {
-                            diagonalMatch = true;
-                            Console.WriteLine("\nYou got three in a row diagonally! You win!", col + 1);
-                            playerMoney += COST_PER_SPIN;
-                            numberOfWins++;
-                            amountWon++;
-                            break;
-                        }
-                    }
-                }
+                            rowMatch = false;
 
-                if (diagonalMatch)
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("\n\nTry Again.\n");
-                    Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin again\n");
-                    Console.ReadKey();
-                    break;
-                }
-            }
-                if (gameType == ANY_VERTICAL_WIN || gameType == VERTICAL_CENTER_WIN)
-                {
-                    for (int col = 0; col < slotNumbers.GetLength(0); col++)
-                    {
-                        bool columnMatch = false;
-
-                        for (int row = 0; row < slotNumbers.GetLength(1) - 2; row++)
-                        {
-
-                            if (slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row + 1, col] == slotNumbers[row + 2, col])
+                            for (int col = 0; col < slotNumbers.GetLength(0); col++)
                             {
-                                columnMatch = true;
-                                Console.WriteLine("\nYou got three in a row! You win!", col + 1);
-                                playerMoney += COST_PER_SPIN;
-                                numberOfWins++;
-                                amountWon++;
-                                break;
+                                if (slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row + 1, col] == slotNumbers[row + 2, col])
+                                {
+                                    rowMatch = true;
+                                    Console.WriteLine("\nYou got three in a row! You win!", col + 1);
+                                    playerMoney += COST_PER_SPIN;
+                                    numberOfWins++;
+                                    amountWon++;
+                                    break;
+                                }
                             }
                         }
 
-                        if (columnMatch)
+                        if (rowMatch)
                         {
                             break;
                         }
@@ -219,46 +163,113 @@ class Program
                             break;
                         }
                     }
-                }
 
-                if (gameType == DIAGONAL_LEFT_WIN || gameType == DIAGONAL_RIGHT_WIN)
-            {
-                for (int row = 0; row < slotNumbers.GetLength(1); row++)
-                {
-                    bool diagonalWin = false;
-
-                    for (int col = 0; col < slotNumbers.GetLength(0); col++)
+                    if (gameType == TypeOfGamePlay.AllDiagonalLines)
                     {
-                        if (slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row, col] == slotNumbers[row + 2, col + 1])
+                        for (int col = 0; col < slotNumbers.GetLength(0); col++)
                         {
-                            diagonalWin = true;
-                            Console.WriteLine("\nYou got three in a row diagonally! You win!", col + 1);
-                            playerMoney += COST_PER_SPIN;
-                            numberOfWins++;
-                            amountWon += COST_PER_SPIN;
+                            bool diagonalMatch = false;
+
+                            for (int row = 0; row < slotNumbers.GetLength(1); row++)
+                            {
+                                if (slotNumbers[row, col] < 2 && slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row, col] == slotNumbers[row + 2, col])
+                                {
+                                    diagonalMatch = true;
+                                    Console.WriteLine("\nYou got three in a row diagonally! You win!", col + 1);
+                                    playerMoney += COST_PER_SPIN;
+                                    numberOfWins++;
+                                    amountWon++;
+                                    break;
+                                }
+                            }
+
+                            if (diagonalMatch)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("\n\nTry Again.\n");
+                                Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin again\n");
+                                Console.ReadKey();
+                                break;
+                            }
+                        }
+                        if (gameType == TypeOfGamePlay.AllVerticalLines || gameType == TypeOfGamePlay.VerticalCenterLine)
+                        {
+                            for (int col = 0; col < slotNumbers.GetLength(0); col++)
+                            {
+                                bool columnMatch = false;
+
+                                for (int row = 0; row < slotNumbers.GetLength(1) - 2; row++)
+                                {
+
+                                    if (slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row + 1, col] == slotNumbers[row + 2, col])
+                                    {
+                                        columnMatch = true;
+                                        Console.WriteLine("\nYou got three in a row! You win!", col + 1);
+                                        playerMoney += COST_PER_SPIN;
+                                        numberOfWins++;
+                                        amountWon++;
+                                        break;
+                                    }
+                                }
+
+                                if (columnMatch)
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\n\nTry Again.\n");
+                                    Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin again\n");
+                                    Console.ReadKey();
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (gameType == TypeOfGamePlay.DiagonalLeftLine || gameType == TypeOfGamePlay.DiagonalRightLine)
+                        {
+                            for (int row = 0; row < slotNumbers.GetLength(1); row++)
+                            {
+                                bool diagonalWin = false;
+
+                                for (int col = 0; col < slotNumbers.GetLength(0); col++)
+                                {
+                                    if (slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row, col] == slotNumbers[row + 2, col + 1])
+                                    {
+                                        diagonalWin = true;
+                                        Console.WriteLine("\nYou got three in a row diagonally! You win!", col + 1);
+                                        playerMoney += COST_PER_SPIN;
+                                        numberOfWins++;
+                                        amountWon += COST_PER_SPIN;
+                                    }
+                                }
+
+                                if (diagonalWin)
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\n\nTry Again.\n");
+                                    Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin again\n");
+                                    spinButton = char.ToUpper(Console.ReadKey().KeyChar);
+                                    Console.ReadKey();
+                                    break;
+                                }
+                            }
+                        }
+
+                        Console.WriteLine($"Your remainining balance: ${playerMoney}");
+                        if (playerMoney < COST_PER_SPIN)
+                        {
+                            Console.WriteLine("You have run out of money! Better luck next time.");
                         }
                     }
                 }
-
-                if (diagonalWin)
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("\n\nTry Again.\n");
-                    Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin again\n");
-                    spinButton = char.ToUpper(Console.ReadKey().KeyChar);
-                    Console.ReadKey();
-                    break;
-                }
             }
-        }
-
-        Console.WriteLine($"Your remainining balance: ${playerMoney}");
-        if (playerMoney < COST_PER_SPIN)
-        {
-            Console.WriteLine("You have run out of money! Better luck next time.");
         }
     }
 }
