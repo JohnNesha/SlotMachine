@@ -50,7 +50,6 @@ class Program
             if (playerMoney >= COST_PER_SPIN)
             {
                 Console.WriteLine($"\nYou have entered ${playerMoney}. Let the games begin!\n");
-                break;
             }
             else
             //If player doesn't enter an amount over spin costs player will be advised to enter more money
