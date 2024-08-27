@@ -58,6 +58,7 @@ class Program
                 playerMoney = double.Parse(Console.ReadLine());
             }
             //Ask Player what type of line to play
+            TypeOfGamePlay gameType;
             while (true)
             {
                 Console.WriteLine("What type of line or lines would you like to play? Please select an option: " +
@@ -70,13 +71,16 @@ class Program
                 "(6) All Diagonal lines\n");
 
                 string gameTypeString = Console.ReadLine().ToUpper();
-                TypeOfGamePlay gameType;
-
+             
                 if (!Enum.TryParse(gameTypeString, out gameType))
                 {
-                    Console.WriteLine("Invalid selection. Please choose a valid option.");
-                    continue;
+                    break;
                 }
+                else
+                {
+                    Console.WriteLine("Invalid selection. Please choose a valid option.");
+                }
+            }
 
                 //Player hits Y to start or spin the game 
                 Console.WriteLine($"\n\nHit the {ACCEPTED_KEY} button to spin\n");
