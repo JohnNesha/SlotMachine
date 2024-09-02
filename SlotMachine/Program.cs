@@ -29,6 +29,7 @@ class Program
 
         //Amount entered from player to begin the game
         double playerMoney = 0;
+        playerMoney = double.Parse(Console.ReadLine());
 
         while (true)
         {
@@ -38,13 +39,15 @@ class Program
             //Read user input
             string userInput = Console.ReadLine();
 
-            if (double.TryParse(userInput, out playerMoney))
+            if (double.TryParse(userInput, out playerMoney) && playerMoney > 0)
             {
                 break;
             }
+            Console.WriteLine("Invalid amount. Please enter an amount above 0.");
         }
 
-        // double playerMoney = double.Parse(Console.ReadLine());
+        double totalWinnings = 0;
+
         while (true)
         {
             if (playerMoney >= COST_PER_SPIN)
@@ -55,8 +58,9 @@ class Program
             //If player doesn't enter an amount over spin costs player will be advised to enter more money
             {
                 Console.WriteLine($"You have entered ${playerMoney}. Please enter more money to begin the game.\n");
-                playerMoney = double.Parse(Console.ReadLine());
+                break;
             }
+
             //Ask Player what type of line to play
             TypeOfGamePlay gameType;
             while (true)
@@ -72,11 +76,10 @@ class Program
 
                 string gameTypeString = Console.ReadLine().ToUpper();
              
-                if (!Enum.TryParse(gameTypeString, out gameType))
+                if (Enum.TryParse(gameTypeString, out gameType))
                 {
                     break;
                 }
-                else
                 {
                     Console.WriteLine("Invalid selection. Please choose a valid option.");
                 }
@@ -86,11 +89,11 @@ class Program
                 Console.WriteLine($"\n\nHit the {ACCEPTED_KEY} button to spin\n");
                 char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
 
-                while (spinButton != START_SPIN)
+                if (spinButton != START_SPIN)
                 {
                     //If user enters any other letter or character besides 'Y' 
                     Console.WriteLine($"\nInvalid character chosen. Please hit {ACCEPTED_KEY} to spin\n");
-                    spinButton = char.ToUpper(Console.ReadKey().KeyChar);
+                continue;
                 }
 
                 Console.WriteLine("\n");
@@ -108,7 +111,7 @@ class Program
                     int numberOfWins = 0;
                     double amountWon = 1.00;
 
-                    int[,] slotNumbers = new int[VERTICAL_LINES, HORIZONTAL_LINES];
+                    int[,] slotNumbers = new int[HORIZONTAL_LINES, VERTICAL_LINES];
 
                     Console.WriteLine("\n");
 
@@ -133,7 +136,7 @@ class Program
                     //checks whether first number matches the other two numbers in row
                     bool rowMatch = false;
 
-                    if (gameType == TypeOfGamePlay.AllHorizontalLines || gameType == TypeOfGamePlay.HorizontalCenterLine)
+                    if (gameType == TypeOfGamePlay.AllHorizontalLines)
                     {
                         //Process Horizontal Wins
                         for (int row = 0; row < slotNumbers.GetLength(1); row++)
@@ -148,7 +151,7 @@ class Program
                                     Console.WriteLine("\nYou got three in a row! You win!", col + 1);
                                     playerMoney += COST_PER_SPIN;
                                     numberOfWins++;
-                                    amountWon++;
+                                    amountWon += COST_PER_SPIN;
                                     break;
                                 }
                             }
