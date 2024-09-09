@@ -29,7 +29,6 @@ class Program
 
         //Amount entered from player to begin the game
         double playerMoney = 0;
-        playerMoney = double.Parse(Console.ReadLine());
 
         while (true)
         {
@@ -75,30 +74,28 @@ class Program
                 "(6) All Diagonal lines\n");
 
                 string gameTypeString = Console.ReadLine().ToUpper();
-             
+
                 if (Enum.TryParse(gameTypeString, out gameType))
-                {
                     break;
-                }
-                {
-                    Console.WriteLine("Invalid selection. Please choose a valid option.");
-                }
+
+                Console.WriteLine("Invalid selection. Please choose a valid option.");
             }
 
-                //Player hits Y to start or spin the game 
-                Console.WriteLine($"\n\nHit the {ACCEPTED_KEY} button to spin\n");
-                char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
 
-                if (spinButton != START_SPIN)
-                {
-                    //If user enters any other letter or character besides 'Y' 
-                    Console.WriteLine($"\nInvalid character chosen. Please hit {ACCEPTED_KEY} to spin\n");
-                continue;
-                }
+         //Player hits Y to start or spin the game 
+        Console.WriteLine($"\n\nHit the {ACCEPTED_KEY} button to spin\n");
+        char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
 
-                Console.WriteLine("\n");
+        if (spinButton != START_SPIN)
+             {
+              //If user enters any other letter or character besides 'Y' 
+              Console.WriteLine($"\nInvalid character chosen. Please hit {ACCEPTED_KEY} to spin\n");
+              continue;
+            }
 
-                bool continuePlaying = spinButton == START_SPIN;
+        Console.WriteLine("\n");
+
+        bool continuePlaying = spinButton == START_SPIN;
 
                 while (continuePlaying)
                 {
@@ -136,7 +133,7 @@ class Program
                     //checks whether first number matches the other two numbers in row
                     bool rowMatch = false;
 
-                    if (gameType == TypeOfGamePlay.AllHorizontalLines)
+                    if (gameType == TypeOfGamePlay.AllHorizontalLines || gameType == TypeOfGamePlay.HorizontalCenterLine)
                     {
                         //Process Horizontal Wins
                         for (int row = 0; row < slotNumbers.GetLength(1); row++)
@@ -268,14 +265,20 @@ class Program
                             }
                         }
 
+                    totalWinnings += amountWon;
+                    playerMoney += amountWon;
+
+                    Console.WriteLine($"Your remaining balance: ${playerMoney}");
+                    Console.WriteLine($"Total winnings so far: ${totalWinnings}");
+
                         Console.WriteLine($"Your remainining balance: ${playerMoney}");
                         if (playerMoney < COST_PER_SPIN)
                         {
                             Console.WriteLine("You have run out of money! Better luck next time.");
+                        break;
                         }
                     }
-                }
-            
+                }    
         }
     }
 }
