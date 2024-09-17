@@ -86,18 +86,15 @@ class Program
         Console.WriteLine($"\n\nHit the {ACCEPTED_KEY} button to spin\n");
         char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
 
-        if (spinButton != START_SPIN)
-             {
-              //If user enters any other letter or character besides 'Y' 
-              Console.WriteLine($"\nInvalid character chosen. Please hit {ACCEPTED_KEY} to spin\n");
-              continue;
+            if (spinButton != START_SPIN)
+            {
+                //If user enters any other letter or character besides 'Y' 
+                Console.WriteLine($"\nInvalid character chosen. Please hit {ACCEPTED_KEY} to spin\n");
+                continue;
             }
+            
 
         Console.WriteLine("\n");
-
-        bool continuePlaying = spinButton == START_SPIN;
-
-                while (continuePlaying)
                 {
                     playerMoney -= COST_PER_SPIN;
 
@@ -274,7 +271,7 @@ class Program
                         Console.WriteLine($"Your remainining balance: ${playerMoney}");
                         if (playerMoney < COST_PER_SPIN)
                         {
-                            Console.WriteLine("You have run out of money! Better luck next time.");
+                        Console.WriteLine("You have run out of money! Better luck next time.");
                         break;
                         }
                     }
