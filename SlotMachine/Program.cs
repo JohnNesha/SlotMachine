@@ -145,7 +145,7 @@ class Program
 
                         for (int col = 0; col < slotNumbers.GetLength(0); col++)
                         {
-                            if (slotNumbers[row, col] == slotNumbers[HORIZONTAL_LINES + 1, col] && slotNumbers[HORIZONTAL_LINES + 1, col] == slotNumbers[HORIZONTAL_LINES + 2, col])
+                            if (slotNumbers[row, col] == slotNumbers[HORIZONTAL_LINES, col + 1] && slotNumbers[HORIZONTAL_LINES, col + 1] == slotNumbers[HORIZONTAL_LINES, col + 2])
                             {
                                 rowMatch = true;
                                 Console.WriteLine("\nYou got three in a row! You win!", col + 1);
