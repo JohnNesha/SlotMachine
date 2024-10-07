@@ -81,7 +81,6 @@ class Program
                 Console.WriteLine("Invalid selection. Please choose a valid option.");
             }
 
-
          //Player hits Y to start or spin the game 
         Console.WriteLine($"\n\nHit the {ACCEPTED_KEY} button to spin\n");
         char spinButton = char.ToUpper(Console.ReadKey().KeyChar);
@@ -93,7 +92,6 @@ class Program
                 continue;
             }
             
-
         Console.WriteLine("\n");
             
             
@@ -124,9 +122,12 @@ class Program
                     }
 
                     Console.WriteLine("\n");
+                }
 
-                    //Print Slot numbers
-                    for (int col = 0; col < VERTICAL_LINES; col++)
+                //Print Slot numbers
+                for (int col = 0; col < VERTICAL_LINES; col++)
+                {
+                    for (int row = 0; row < HORIZONTAL_LINES; row++)
                     {
                         Console.Write(slotNumbers[row, col] + " ");
                     }
@@ -267,7 +268,6 @@ class Program
                             }
                         }
                     }
-
 
                     totalWinnings += amountWon;
                     playerMoney += amountWon;
