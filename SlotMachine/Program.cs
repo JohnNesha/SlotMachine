@@ -38,7 +38,7 @@ class Program
             //Read user input
             string userInput = Console.ReadLine();
 
-            if (double.TryParse(userInput, out playerMoney) && playerMoney > 0)
+            if (double.TryParse(userInput, out playerMoney) && playerMoney > COST_PER_SPIN)
             {
                 break;
             }
@@ -125,12 +125,13 @@ class Program
                 }
 
                 //Print Slot numbers
-                for (int col = 0; col < VERTICAL_LINES; col++)
+                for (int row = 0; row < HORIZONTAL_LINES; row++)
                 {
-                    for (int row = 0; row < HORIZONTAL_LINES; row++)
+                    for (int col = 0; col < VERTICAL_LINES; col++)
                     {
                         Console.Write(slotNumbers[row, col] + " ");
                     }
+                    
                 }
                 //Check for one win at a time
                 //loops checks each element in array to see if theres a match
