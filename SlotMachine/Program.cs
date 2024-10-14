@@ -42,7 +42,7 @@ class Program
             {
                 break;
             }
-            Console.WriteLine("Invalid amount. Please enter an amount above 0.");
+            Console.WriteLine("Invalid amount. Please enter an amount above $2.00.");
         }
 
         double totalWinnings = 0;
@@ -131,7 +131,7 @@ class Program
                     {
                         Console.Write(slotNumbers[row, col] + " ");
                     }
-                    
+                    Console.WriteLine();
                 }
                 //Check for one win at a time
                 //loops checks each element in array to see if theres a match
@@ -141,11 +141,11 @@ class Program
                 if (gameType == TypeOfGamePlay.AllHorizontalLines || gameType == TypeOfGamePlay.HorizontalCenterLine)
                 {
                     //Process Horizontal Wins
-                    for (int row = 0; row < slotNumbers.GetLength(1); row++)
+                    for (int row = 0; row < HORIZONTAL_LINES; row++)
                     {
                         rowMatch = false;
 
-                        for (int col = 0; col < slotNumbers.GetLength(0); col++)
+                        for (int col = 0; col < VERTICAL_LINES; col++)
                         {
                             if (slotNumbers[row, col] == slotNumbers[HORIZONTAL_LINES, col + 1] && slotNumbers[HORIZONTAL_LINES, col + 1] == slotNumbers[HORIZONTAL_LINES, col + 2])
                             {
@@ -174,11 +174,11 @@ class Program
 
                 if (gameType == TypeOfGamePlay.AllDiagonalLines)
                 {
-                    for (int col = 0; col < slotNumbers.GetLength(0); col++)
+                    for (int col = 0; col < VERTICAL_LINES; col++)
                     {
                         bool diagonalMatch = false;
 
-                        for (int row = 0; row < slotNumbers.GetLength(1); row++)
+                        for (int row = 0; row < HORIZONTAL_LINES; row++)
                         {
                             if (slotNumbers[row, col] < 2 && slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row, col] == slotNumbers[row + 2, col])
                             {
