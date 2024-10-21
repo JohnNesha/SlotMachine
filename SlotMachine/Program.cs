@@ -145,18 +145,18 @@ class Program
                     {
                         rowMatch = false;
 
-                        for (int col = 0; col < VERTICAL_LINES; col++)
+
+
+                        if (slotNumbers[row, 0] == slotNumbers[row, 1] && slotNumbers[row, 0] == slotNumbers[row, 2])
                         {
-                            if (slotNumbers[row, col] == slotNumbers[HORIZONTAL_LINES, col + 1] && slotNumbers[HORIZONTAL_LINES, col + 1] == slotNumbers[HORIZONTAL_LINES, col + 2])
-                            {
-                                rowMatch = true;
-                                Console.WriteLine("\nYou got three in a row! You win!", col + 1);
-                                playerMoney += COST_PER_SPIN;
-                                numberOfWins++;
-                                amountWon += COST_PER_SPIN;
-                                break;
-                            }
+                            rowMatch = true;
+                            Console.WriteLine("\nYou got three in a row! You win!");
+                            playerMoney += COST_PER_SPIN;
+                            numberOfWins++;
+                            amountWon += COST_PER_SPIN;
+                            break;
                         }
+                    
                     }
 
                     if (rowMatch)
@@ -176,11 +176,7 @@ class Program
                 {
                     for (int col = 0; col < VERTICAL_LINES; col++)
                     {
-                        bool diagonalMatch = false;
-
-                        for (int row = 0; row < HORIZONTAL_LINES; row++)
-                        {
-                            if (slotNumbers[row, col] < 2 && slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row, col] == slotNumbers[row + 2, col])
+                            if (slotNumbers[0, col] < 2 && slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row, col] == slotNumbers[row + 2, col])
                             {
                                 diagonalMatch = true;
                                 Console.WriteLine("\nYou got three in a row diagonally! You win!", col + 1);
