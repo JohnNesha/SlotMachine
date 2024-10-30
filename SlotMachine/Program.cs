@@ -141,20 +141,27 @@ class Program
                 if (gameType == TypeOfGamePlay.AllHorizontalLines || gameType == TypeOfGamePlay.HorizontalCenterLine)
                 {
                     //Process Horizontal Wins
-                    for (int row = 0; row < HORIZONTAL_LINES; row++)
+                   for (int row = 0; row < HORIZONTAL_LINES; row++)
                     {
-                        rowMatch = false;
+                        for (int col = 0; col < VERTICAL_LINES; col++)
+                        { 
+                            rowMatch = false;
 
-
-
-                        if (slotNumbers[row, 0] == slotNumbers[row, 1] && slotNumbers[row, 0] == slotNumbers[row, 2])
-                        {
-                            rowMatch = true;
-                            Console.WriteLine("\nYou got three in a row! You win!");
-                            playerMoney += COST_PER_SPIN;
-                            numberOfWins++;
-                            amountWon += COST_PER_SPIN;
-                            break;
+                            if (slotNumbers[1, 0] == slotNumbers[1, col] && slotNumbers[1, col] == slotNumbers[1, col])
+                            {
+                                if (slotNumbers[0, 0] == slotNumbers[0, col] && slotNumbers[0, col] == slotNumbers[0, col])
+                                {
+                                    if (slotNumbers[2, 0] == slotNumbers[2, col] && slotNumbers[2, col] == slotNumbers[2, col])
+                                    {
+                                        rowMatch = true;
+                                        Console.WriteLine("\nYou got three in a row! You win!");
+                                        playerMoney += COST_PER_SPIN;
+                                        numberOfWins++;
+                                        amountWon += COST_PER_SPIN;
+                                        break;
+                                    }
+                                }
+                            }
                         }
                     
                     }
@@ -172,11 +179,13 @@ class Program
                     }
                 }
 
+                bool diagonalMatch = false;
+
                 if (gameType == TypeOfGamePlay.AllDiagonalLines)
                 {
                     for (int col = 0; col < VERTICAL_LINES; col++)
                     {
-                            if (slotNumbers[0, col] < 2 && slotNumbers[row, col] == slotNumbers[row + 1, col] && slotNumbers[row, col] == slotNumbers[row + 2, col])
+                            if (slotNumbers[0, col] == slotNumbers[1,1] && slotNumbers[0, col] == slotNumbers[2, 2])
                             {
                                 diagonalMatch = true;
                                 Console.WriteLine("\nYou got three in a row diagonally! You win!", col + 1);
