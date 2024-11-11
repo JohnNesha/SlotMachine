@@ -1,4 +1,6 @@
-﻿namespace SlotMachine;
+﻿using System.Text.RegularExpressions;
+
+namespace SlotMachine;
 
 class Program
 {
@@ -138,23 +140,24 @@ class Program
                 //checks whether first number matches the other two numbers in row
                 bool rowMatch = false;
 
-                if (gameType == TypeOfGamePlay.AllHorizontalLines || gameType == TypeOfGamePlay.HorizontalCenterLine)
+                if (gameType == TypeOfGamePlay.AllHorizontalLines)
                 {
                     //Process Horizontal Wins
-                   for (int row = 0; row < HORIZONTAL_LINES; row++)
+                    for (int row = 0; row < HORIZONTAL_LINES; row++)
                     {
-                        for (int col = 0; col < VERTICAL_LINES; col++)
-                        { 
-                            rowMatch = false;
+                        rowMatch = false;
 
-                            if (slotNumbers[1, 0] == slotNumbers[1, col] && slotNumbers[1, col] == slotNumbers[1, col])
+                        for (int col = 0; col < VERTICAL_LINES; col++)
+                        {
+                            if (slotNumbers[row, 0] == slotNumbers[row, col])
                             {
-                                if (slotNumbers[0, 0] == slotNumbers[0, col] && slotNumbers[0, col] == slotNumbers[0, col])
+                                bool matchFound = true;
+                                for (int row = 0; row < HORIZONTAL_LINES; row++)
                                 {
-                                    if (slotNumbers[2, 0] == slotNumbers[2, col] && slotNumbers[2, col] == slotNumbers[2, col])
+                                    if (matchFound)
                                     {
                                         rowMatch = true;
-                                        Console.WriteLine("\nYou got three in a row! You win!");
+                                        Console.WriteLine("\nYou got all three rows! You win!");
                                         playerMoney += COST_PER_SPIN;
                                         numberOfWins++;
                                         amountWon += COST_PER_SPIN;
@@ -162,10 +165,41 @@ class Program
                                     }
                                 }
                             }
+                            if (rowMatch)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("\n\nTry Again.\n");
+                                Console.WriteLine($"Hit the {ACCEPTED_KEY} button to spin again\n");
+                                Console.ReadKey();
+                                break;
+                            }
                         }
-                    
                     }
 
+                    if (gameType == TypeOfGamePlay.HorizontalCenterLine)
+                    {
+                        for (int row = 0; row < HORIZONTAL_LINES; row++)
+                        {
+                            bool horizontalMatch = false;
+
+                            for (int col = 0; col < VERTICAL_LINES; col++)
+                            {
+                                if (slotNumbers[row, 0] == slotNumbers[row, col])
+                                {
+                                    horizontalMatch = true;
+                                    Console.WriteLine("\nYou got three in a row! You win!");
+                                    playerMoney += COST_PER_SPIN;
+                                    numberOfWins++;
+                                    amountWon += COST_PER_SPIN;
+                                    break;
+
+                                }
+                            }
+                        }
+                    }
                     if (rowMatch)
                     {
                         break;
@@ -178,6 +212,7 @@ class Program
                         break;
                     }
                 }
+                
 
                 bool diagonalMatch = false;
 
